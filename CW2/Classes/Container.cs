@@ -11,7 +11,7 @@ public abstract class Container
     public double Height { get; private set; }
     public double Depth { get; private set; }
     public double ContainerWeight { get; private set; }
-    public double MaxLoad { get; private set; }
+    public double MaxLoad { get; private set;  }
 
 
     public Container(double height, double depth, double containerWeight, double maxLoad)

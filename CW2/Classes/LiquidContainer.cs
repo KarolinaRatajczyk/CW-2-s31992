@@ -16,7 +16,7 @@ public class LiquidContainer : Container, IHazardNotifier
     {
         double allowedWeight = IsHazardous ? MaxLoad * 0.5 : MaxLoad * 0.9;
         if (CurrentLoadWeight + weight > allowedWeight)
-            throw new OverflowException("Dangerous situation - oad weight is greater than allowed container load weight");
+            throw new OverflowException("Dangerous situation - load weight is greater than allowed container load weight");
         base.Load(weight);
     }
     
