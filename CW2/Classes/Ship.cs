@@ -19,7 +19,8 @@ public class Ship
         if (Containers.Count >= MaxContainerCount)
             throw new InvalidOperationException("Too many containers");
         
-        if (TotalWeight() + container.ContainerWeight + container.CurrentLoadWeight > MaxLoadTons * 1000)
+        double currentWeight = container.ContainerWeight + container.CurrentLoadWeight + TotalWeight();
+        if (currentWeight > MaxLoadTons * 1000)
             throw new InvalidOperationException("It would exceed allowed max load on ship.");
         
         Containers.Add(container);
@@ -46,6 +47,13 @@ public class Ship
         int index = Containers.FindIndex(c => c.SerialNumber == serialNumber);
         if (index == -1)
             throw new InvalidOperationException("No container on ship with that serial number");
+        
+        double newTotalWeight = TotalWeight() - 
+                                (Containers[index].CurrentLoadWeight + Containers[index].ContainerWeight) + 
+                                newContainer.ContainerWeight + newContainer.CurrentLoadWeight;
+        if (newTotalWeight > MaxLoadTons * 1000)
+            throw new InvalidOperationException("It would exceed allowed max load on ship.");
+        
         Containers[index] = newContainer;
     }
 
@@ -76,5 +84,4 @@ public class Ship
         
         return shipInfo + containersInfo;
     }
-    
 }

@@ -11,11 +11,14 @@ public abstract class Container
     public double Height { get; private set; }
     public double Depth { get; private set; }
     public double ContainerWeight { get; private set; }
-    public double MaxLoad { get; }
+    protected double MaxLoad { get; }
 
 
     public Container(double height, double depth, double containerWeight, double maxLoad)
     {
+        if (height <= 0 || depth <= 0 || containerWeight <= 0 || maxLoad <= 0)
+            throw new ArgumentException("All parameters must be grater than zero.");
+        
         SerialNumber = GenerateSerialNumber();
         Height = height;
         Depth = depth;

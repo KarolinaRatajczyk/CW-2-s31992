@@ -1,22 +1,27 @@
 using CW2.Interfaces;
+using CW2.Exceptions;
 
 namespace CW2.Classes;
 
 public class LiquidContainer : Container, IHazardNotifier
 {
-    public bool IsHazardous { get; private set; }
+    public bool IsHazardous { get; }
 
-    public LiquidContainer(double weight, double depth, double containerWeight, double maxLoad, bool isHazardous)
-        : base(weight, depth, containerWeight, maxLoad)
+    public LiquidContainer(double height, double depth, double containerWeight, double maxLoad, bool isHazardous)
+        : base(height, depth, containerWeight, maxLoad)
     {
         IsHazardous = isHazardous;
     }
 
     public override void Load(double weight)
     {
-        double allowedWeight = IsHazardous ? MaxLoad * 0.5 : MaxLoad * 0.9;
+        var allowedWeight = IsHazardous ? MaxLoad * 0.5 : MaxLoad * 0.9;
         if (CurrentLoadWeight + weight > allowedWeight)
-            throw new OverflowException("Dangerous situation - load weight is greater than allowed container load weight");
+        {
+            NotifyHazard("Attempt to overload container");
+            throw new OverfillException("Dangerous situation - load weight is greater than allowed container load weight");
+        }
+
         base.Load(weight);
     }
     
