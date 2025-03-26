@@ -25,8 +25,8 @@ public class RefrigeratedContainer : Container, IHazardNotifier
     {
         if(!_productTemperatures.ContainsKey(productType))
             throw new ArgumentException("Invalid product type.");
-        if(temperature > _productTemperatures[productType])
-            throw new ArgumentException("Temperature too high for " + productType);
+        if(temperature < _productTemperatures[productType])
+            throw new ArgumentException("Temperature too low for " + productType);
         
         ProductType = productType;
         Temperature = temperature;
