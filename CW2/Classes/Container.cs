@@ -7,7 +7,7 @@ public abstract class Container
     private static int _idCounter = 1;
     
     public string SerialNumber { get; private set; }
-    public double CurrentLoadWeight { get; private set; } = 0;
+    public double CurrentLoadWeight { get; protected set; } = 0;
     public double Height { get; private set; }
     public double Depth { get; private set; }
     public double ContainerWeight { get; private set; }
@@ -29,7 +29,7 @@ public abstract class Container
         return "KON-" + GetType().Name[0] + "-" + (_idCounter++);
     }
     
-    public void UnLoad()
+    public virtual void UnLoad()
     {
         CurrentLoadWeight = 0;
     }
