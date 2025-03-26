@@ -34,9 +34,8 @@ public class Ship
         }
     }
 
-    public void RemoveContainer(string serialNumber)
+    public void RemoveContainer(Container container)
     {
-        var container = Containers.FirstOrDefault(c => c.SerialNumber == serialNumber);
         if (container == null)
             throw new InvalidOperationException("No container on ship with that serial number");
         Containers.Remove(container);

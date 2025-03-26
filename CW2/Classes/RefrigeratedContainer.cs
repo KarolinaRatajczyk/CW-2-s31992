@@ -39,6 +39,6 @@ public class RefrigeratedContainer : Container, IHazardNotifier
 
     public override string GetContainerInfo()
     {
-        return $"{base.GetContainerInfo()}, Temperature: {Temperature} Celsius";
+        return $"{base.GetContainerInfo()}, Product type: {ProductType}, Temperature: {Temperature} Celsius";
     }
 }
