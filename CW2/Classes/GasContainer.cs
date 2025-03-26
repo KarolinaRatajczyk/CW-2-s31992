@@ -1,6 +1,6 @@
 namespace CW2.Classes;
 
-public class GasContainer
+public class GasContainer : Container
 {
     
 }
