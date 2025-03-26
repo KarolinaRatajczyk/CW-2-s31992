@@ -4,6 +4,9 @@ class Program
 {
     public static void Main()
     {
+        //w moim kodzie kontener chłodniczy ma numery seryjne z literą R, ponieważ zrobiłam wszystkie nazwy po angielsku
+        //(zamiast KON-C-1 jest KON-R-1)
+        
         //Stworzenie kontenera danego typu
         LiquidContainer kontenerL1 = new LiquidContainer(350, 200, 80, 450, true);
         GasContainer kontenerG1 = new GasContainer(200, 150, 100, 200, 2.5);
