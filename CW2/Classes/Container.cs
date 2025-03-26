@@ -11,7 +11,7 @@ public abstract class Container
     public double Height { get; private set; }
     public double Depth { get; private set; }
     public double ContainerWeight { get; private set; }
-    public double MaxLoad { get; private set;  }
+    public double MaxLoad { get; }
 
 
     public Container(double height, double depth, double containerWeight, double maxLoad)
@@ -39,5 +39,13 @@ public abstract class Container
         if (CurrentLoadWeight + weight > MaxLoad)
             throw new OverfillException("Load weight is greater than maximum container load weight");
         CurrentLoadWeight += weight;
+    }
+
+    public virtual string GetContainerInfo()
+    {
+        return GetType().Name + 
+               " - Serial number: " + SerialNumber + 
+               ", Max load: " + MaxLoad + 
+               " kg, Container weight: " + ContainerWeight + " kg";
     }
 }

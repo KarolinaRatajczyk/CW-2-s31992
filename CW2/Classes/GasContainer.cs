@@ -22,4 +22,9 @@ public class GasContainer : Container, IHazardNotifier
     {
         Console.WriteLine("Hazard ALERT: " + message + " - Container: " + SerialNumber);
     }
+    
+    public override string GetContainerInfo()
+    {
+        return $"{base.GetContainerInfo()}, Pressure: {Pressure} atm";
+    }
 }

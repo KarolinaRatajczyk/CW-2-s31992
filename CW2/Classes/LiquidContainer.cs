@@ -24,4 +24,9 @@ public class LiquidContainer : Container, IHazardNotifier
     {
         Console.WriteLine("Hazard ALERT: " + message + " - Container: " + SerialNumber);
     }
+    
+    public override string GetContainerInfo()
+    {
+        return $"{base.GetContainerInfo()}, Type of load: {(IsHazardous ? "Hazardous" : "Normal")}";
+    }
 }

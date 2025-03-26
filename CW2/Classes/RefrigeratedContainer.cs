@@ -36,4 +36,9 @@ public class RefrigeratedContainer : Container, IHazardNotifier
     {
         Console.WriteLine("Hazard ALERT: " + message + " - Container: " + SerialNumber);
     }
+
+    public override string GetContainerInfo()
+    {
+        return $"{base.GetContainerInfo()}, Temperature: {Temperature} Celsius";
+    }
 }
