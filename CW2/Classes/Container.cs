@@ -7,7 +7,7 @@ public abstract class Container
     private static int _idCounter = 1;
     
     public string SerialNumber { get; private set; }
-    public double CurrentLoadWeight { get; protected set; } = 0;
+    public double CurrentLoadWeight { get; protected set; }
     public double Height { get; private set; }
     public double Depth { get; private set; }
     public double ContainerWeight { get; private set; }
@@ -24,6 +24,7 @@ public abstract class Container
         Depth = depth;
         ContainerWeight = containerWeight;
         MaxLoad = maxLoad;
+        CurrentLoadWeight = 0;
     }
     
     
